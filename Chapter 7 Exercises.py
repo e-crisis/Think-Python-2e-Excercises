@@ -84,3 +84,29 @@ def eval_loop():
 
 
 eval_loop()
+
+# Exercise 7.3
+
+def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n-1)
+
+
+def estimate_pi():
+    k = 0
+    sum = 0
+    c = 2 * math.sqrt(2)/9801
+    while True:
+        a = factorial(4*k) * (1103 + 26390 * k)
+        b = factorial(k) ** 4 * 396 ** (4*k)
+        term = c * a/b
+        sum = sum + term
+        k = k + 1
+        if term < 1e-15:
+            break
+    return 1/sum
+
+
+print(estimate_pi())
+
